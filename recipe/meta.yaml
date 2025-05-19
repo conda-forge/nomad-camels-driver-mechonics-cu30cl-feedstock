@@ -1,5 +1,5 @@
 {% set name = "nomad-camels-driver-mechonics-cu30cl" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nomad_camels_driver_mechonics_cu30cl-{{ version }}.tar.gz
-  sha256: b0654c9d31e49b549aef396d169b0fac0b3f9974701cfdf1cb519be679bb7dcb
+  sha256: 1279adbcecd088784ba09b3b767d87c41b62ce7011e95370f0b30ffe1f73c6cc
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   host:
