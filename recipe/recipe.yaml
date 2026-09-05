@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  name: nomad-camels-driver-mechonics-cu30cl
+  version: "0.1.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/nomad_camels_driver_mechonics_cu30cl-${{ version }}.tar.gz
+  sha256: 1279adbcecd088784ba09b3b767d87c41b62ce7011e95370f0b30ffe1f73c6cc
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=61.0
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - nomad-camels
+
+tests:
+  - python:
+      imports:
+        - nomad_camels_driver_mechonics_cu30cl
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Device driver for the Mechonics CU30 closed loop stage controller.
+  license: LGPL-2.1-or-later
+  license_file: LICENSE.txt
+  homepage: https://github.com/FAU-LAP/CAMELS_drivers
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
